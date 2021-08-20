@@ -1,0 +1,1376 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="alphafoldを一から解説, machine learning,back-end,python,typescript">
+    <meta name="description" content="Blog about web development, machine learning, and rants">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>alphafoldを一から解説 | Blowg</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Blowg</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Home</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact/index.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Blowg</div>
+        <div class="logo-desc">
+            
+            Blog about web development, machine learning, and rants
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Home
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact/index.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Zhao-DU/Zhao-DU.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me!
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Zhao-DU/Zhao-DU.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me!" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">alphafoldを一から解説</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/">
+                                <span class="chip bg-color">日本語</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="post-category">
+                                日本語
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-08-11
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="ええ？なにこのポスト？"><a href="#ええ？なにこのポスト？" class="headerlink" title="ええ？なにこのポスト？"></a>ええ？なにこのポスト？</h2><p>最近、Google社がタンパク質のフォールディングを計算できるAlphafoldをリリースした。AlphaFoldというと、2018年CASP13コンテストに参加したAlphaFold 1.0と2020年CASP14コンペティションんみ参加したAlphafold 2.0という二つのバージョンがある。<strong>Alphafold 1.0とAlphafold 2.0は、構造がまったく違っているので、</strong>このポスト両方を見てみるかと思う。</p>
+<figure>
+  <img src = "alphafold-ja/overview.webp">
+  <figcaption style="text-align:center;"><strong>Alphafold 2.0の一覧。</strong> <a target="_blank" rel="noopener" href="https://lh3.googleusercontent.com/pL18FAkwzN55iHvMt2W4XRGjueHWe0ILqX1Qm2e4qlPsK3yjDSott3LZIgSg2uqPPn7Zvu3hfxUtYtjDs3bM27zcF8AO_jYnfk8q=w1440-rw-v1"> ソース</a>
+  </figcaption>
+</figure>
+
+<h2 id="リソース"><a href="#リソース" class="headerlink" title="リソース"></a>リソース</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/d41586-020-00341-9">Cryo-EMの利点について</a></li>
+<li><a target="_blank" rel="noopener" href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology">DeepmingからAlphafoldの一覧</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-019-1923-7.epdf?author_access_token=Z_KaZKDqtKzbE7Wd5HtwI9RgN0jAjWel9jnR3ZoTv0MCcgAwHMgRx9mvLjNQdB2TlQQaa7l420UCtGo8vYQ39gg8lFWR9mAZtvsN_1PrccXfIbc6e-tGSgazNL_XdtQzn1PHfy21qdcxV7Pw-k3htw==">Alphafold 1.0の論文 (Natureで発表された)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-021-03819-2">Alphafold 2.0の論文（準備中）</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-021-03828-1">Alphafold 2.0の論文　（上と違う）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/deepmind/alphafold/">Alphafold 2.0ソースコード</a></li>
+<li><a target="_blank" rel="noopener" href="https://buomsoo-kim.github.io/attention/2020/01/01/Attention-mechanism-1.md/">ニューラルネットワークにおけるAttentionの説明</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=tPYj3fFJGjk&ab_channel=freeCodeCamp.org">Tensorflow概要</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Multiple_sequence_alignment">MSAについて詳しい説明</a></li>
+</ul>
+<h2 id="モチベーション"><a href="#モチベーション" class="headerlink" title="モチベーション"></a>モチベーション</h2><h3 id="アミノ酸とは？"><a href="#アミノ酸とは？" class="headerlink" title="アミノ酸とは？"></a>アミノ酸とは？</h3><p>タンパク質は、<strong>アミノ酸のチェンです。また、ポリーぺプタイドとも呼ばれています。</strong>　人類の体の中、大体20種類のアミノ酸がある。</p>
+<figure>
+  <img src = "alphafold-ja/amino-acids.png">
+  <figcaption style="text-align:center;"><strong>アミノ酸</strong> <a target="_blank" rel="noopener" href="https://www.nutri.co.jp/nutrition/keywords/ch2-3/keyword1/"> ソース</a>
+  </figcaption>
+</figure>
+
+<p>以下の点を注意しよう：</p>
+<ul>
+<li>アミノ酸をフールネーム、三つのローマ字、また一つのローマ字で表すことができます（例： グリシン = Gly = G）。</li>
+<li>チェンが始まった場所、NH2のある端末をN-terminusと呼ばれ、終わる場所、COOHのある端末をC-terminusと呼ばれます。つまり、<strong>方向性があります。</strong>。</li>
+<li>NH2とCOOHの間に一つの炭素があり、<strong>この炭素についている分子グループをSidechain,またRグループと呼ばれ、基本的にアミノ酸の性質を決める</strong>。</li>
+<li>Sidechain以外のグループを<strong>Backbone</strong>と呼ばれます。</li>
+<li>真ん中の炭素原子を<strong>Cα</strong>と呼ぶ</li>
+</ul>
+<figure>
+  <img src = "alphafold-ja/peptide.jpg">
+  <figcaption style="text-align:center;"><strong>ぺプタイドの構造（左はN-terminus。右はC-terminus）</strong> <a target="_blank" rel="noopener" href="https://www.nutri.co.jp/nutrition/keywords/ch2-3/keyword1/"> ソース</a>
+  </figcaption>
+</figure>
+
+<h3 id="アミノ酸からタンパク質まで"><a href="#アミノ酸からタンパク質まで" class="headerlink" title="アミノ酸からタンパク質まで"></a>アミノ酸からタンパク質まで</h3><p>アミノ酸で作られたタンパク質が特定の三次元の構造が持っていて、全般的な構造に影響を与えるのは、<strong>一次構造、二次構造、三次構造、四次構造</strong>である。</p>
+<h4 id="一次構造"><a href="#一次構造" class="headerlink" title="一次構造"></a>一次構造</h4><p>一次構造は、アミノ酸の配列です。アミノ酸の配列は、遺伝子から直接に推定できるので、現在、人間のほとんどのタンパク質の配列既に解明しています。</p>
+<h4 id="二次構造"><a href="#二次構造" class="headerlink" title="二次構造"></a>二次構造</h4><p>Rグループ以外のグループが<strong>水素結合</strong>により構造ができている。その中、<strong>αヘリックス、βシート</strong>が一番重要。水素結合とは、電子の分布が不均一によりできている静電的な結合で、アイオン結合・共有結合より圧倒的に弱い結合である。</p>
+<figure>
+  <img src = "alphafold-ja/secondary-structure.jpg">
+  <figcaption style="text-align:center;"><strong>Backboneの間の水素結合より、二次構造ができています</strong> <a target="_blank" rel="noopener" href="https://www.google.ca/url?sa=i&url=https%3A%2F%2Fcourses.lumenlearning.com%2Fmicrobiology%2Fchapter%2Fproteins%2F&psig=AOvVaw0R52VojtM4iI1JR2jBSy-I&ust=1628902282088000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCICnsILkrPICFQAAAAAdAAAAABAI"> ソース</a>
+  </figcaption>
+</figure>
+
+<p>例として、実際の論文の中、このような図がよく見られる。</p>
+<figure>
+  <img src = "alphafold-ja/secondary-example.jpg">
+  <figcaption style="text-align:center;"><strong>赤い部分はαヘリックス、青い部分はβシート。構造が特にわからない場合は、細い柱で表される</strong> <a target="_blank" rel="noopener" href="https://blenderartists.org/t/protein-secondary-structures-alpha-helices-beta-sheets/632314"> ソース</a>
+  </figcaption>
+</figure>
+
+<h4 id="三次構造"><a href="#三次構造" class="headerlink" title="三次構造"></a>三次構造</h4><p>三次構造は、Backbone, Sidechainの間の相互作用でできているものである。最も有名なのは二つのシステインのRグループ間に<strong>S-Sの共有結合（Sは硫黄元素、Disulphide-Bridge</strong>。共有結合は水素結合、アイオン結合よりも強い。また、タンパク質のからの安定さ・性能を影響するので、アルツハイマー病、ハンチントン病のようは病気、薬のデザインなどに関わっている重要な問題になっている。</p>
+<figure>
+  <img src = "alphafold-ja/ternary.png">
+  <figcaption style="text-align:center;"><strong>様々な三次構造: Hydrophobic Interactions（疎水性相互作用）, Disulphide Bridge（硫黄共有結合）, Hydrogen Bonds（水素結合）, Hydrophilic Interaction（親水性相互作用）, Ionic Bonds（アイオン結合）</strong> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Protein_tertiary_structure#/media/File:Tertiary_Structure_of_a_Protein.svg">ソース</a>
+  </figcaption>
+</figure>
+
+<h4 id="四次構造"><a href="#四次構造" class="headerlink" title="四次構造"></a>四次構造</h4><p>四次構造は、複数の三次構造ができているアミノ酸のチェインの間の相互作用である。現在「一次構造がわかれば、三次構造は推定できる」という説が基本的に認めらている。しかし、「一次構造がわかれば、四次構造は推定できる」は争論中。</p>
+<h3 id="既存の構造解明手法"><a href="#既存の構造解明手法" class="headerlink" title="既存の構造解明手法"></a>既存の構造解明手法</h3><p><strong>Alphafold 2.0で「タンパク質の構造を推定する」というと、一次構造からを三次構造することです。</strong>　</p>
+<p>Alphafoldは計算手法であり、今、計算結果を実験からできた結果と比べないといけない。現時点では、存在がわかっている２億のタンパク質の中、構造が解明されているのは～１７万個。次、実験手法について紹介したいと思う。</p>
+<h4 id="X線結晶構造解析-X-ray-crystallography"><a href="#X線結晶構造解析-X-ray-crystallography" class="headerlink" title="X線結晶構造解析 (X-ray crystallography)"></a>X線結晶構造解析 (X-ray crystallography)</h4><p>X線結晶構造解析は、結晶の原子および分子構造を決定する実験科学であり、結晶構造により入射するX線のビームが多くの特定の方向に回折する。これらの回折したビームの角度と強度を測定することにより、結晶学者は結晶内の電子密度の3次元画像を作成することができます。</p>
+<figure>
+  <img src = "alphafold-ja/x-ray.png">
+  <figcaption><strong>左上から来た波長は&lambda;である光線を右上まで反射すると、2dsin(&theta;) = n*&lambda;の時（nは整数）、強め合う干渉が発生する。</strong> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/X-ray_crystallography#/media/File:Bragg_diffraction_2.svg">ソース</a>
+  </figcaption>
+</figure>
+
+<div class="video-container"><iframe src="https://www.youtube.com/embed/RUok4O9oovQ" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<p>この手法は<strong>現時点でのGolden Standardと言える</strong>。しかし、タンパク質の結晶を手に入れるのは、実はものすごく難しいことです。その理由は若干があります：</p>
+<ul>
+<li>水性溶液に過飽和までタンパク質を溶かす必要があります、<strong>しかし水に溶かしにくい膜タンパク質は、半分以上を薬のターゲットでありながら精製、結晶させるのは難しい。</strong></li>
+<li>タンパク質のサンプル量があるほど必要です。</li>
+<li>温度、pH、溶液の成分など、様々なファクターが最後の結果に影響を与えますので、工夫がかかってしまいます。</li>
+</ul>
+<h4 id="タンパク質の核磁気共鳴分光法-Protein-Nuclear-Magnetic-Resonance-NMR-Spectroscopy"><a href="#タンパク質の核磁気共鳴分光法-Protein-Nuclear-Magnetic-Resonance-NMR-Spectroscopy" class="headerlink" title="タンパク質の核磁気共鳴分光法 (Protein Nuclear Magnetic Resonance (NMR) Spectroscopy)"></a>タンパク質の核磁気共鳴分光法 (Protein Nuclear Magnetic Resonance (NMR) Spectroscopy)</h4><p>これはMRIの同じ原理、核磁気共鳴を用いる手法です。おおざっぱにすると以下の流れになります：</p>
+<ol>
+<li>外部静磁場B0による、サンプルの原子核のスピンが一直線にする</li>
+<li>一直線を振動磁界で(RF)で破壊する</li>
+<li>原子核スピンの特性を分析する</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/noesy-example.png">
+  <figcaption><strong>核磁気共鳴でタンパク質を解明する</strong> <a target="_blank" rel="noopener" href="https://www.protein-nmr.org.uk/solution-nmr/spectrum-descriptions/h-h-noesy/">ソース</a>
+  </figcaption>
+</figure>
+
+<div class="video-container"><iframe src="https://www.youtube.com/embed/t8JIBwLsCGA" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<p>この手法にも欠点が若干あります：</p>
+<ol>
+<li>装備は高いです(５０万～５億円まで。解像度が良いほど)。</li>
+<li>割と高いサンプル量が必要です。</li>
+<li>サンプルが大きな分子になると、ピークの数も増えてしまいますので、解明するのはも難しくなってしまう。</li>
+</ol>
+<h4 id="低温電子顕微鏡法-Cryogenic-electron-microscopy-Cryo-EM"><a href="#低温電子顕微鏡法-Cryogenic-electron-microscopy-Cryo-EM" class="headerlink" title="低温電子顕微鏡法 (Cryogenic electron microscopy, Cryo-EM)"></a>低温電子顕微鏡法 (Cryogenic electron microscopy, Cryo-EM)</h4><p>Cryo-EMは透過型電子顕微鏡法の一種で、試料を低温（多くの場合液体窒素の温度）において解析する手法である。通常の電子顕微鏡での観察では、電子線による損傷と、高真空状態が生物試料に与える影響は大きかった。この手法では、氷の結晶が発生しないように一瞬でサンプルをフリーズして、電子でサンプルを調査できる</p>
+<p>Cryo-EMは、以下の利点がある：</p>
+<ol>
+<li>膜タンパク質構造でも解明できる</li>
+<li>タンパク質が「結晶できるか結晶できないか」</li>
+</ol>
+<p><strong>現時点では、これはAlphafoldの一番強い競争相手じゃないか</strong>と思う。データの傾向によると、2024年以降、Cryo-EMでできたタンパク質の構造の数がX線結晶に超えてゆく。</p>
+<figure>
+  <img src = "alphafold-ja/cryo-em-detail.png">
+  <figcaption><strong>近年、cryo-EMの解像度がだんだん上がっている。</strong> <a target="_blank" rel="noopener" href="https://media.nature.com/lw800/magazine-assets/d41586-020-00341-9/d41586-020-00341-9_17650410.png">ソース</a>
+  </figcaption>
+</figure>
+
+
+<h2 id="計算手法でタンパク質の構造を解明する共通"><a href="#計算手法でタンパク質の構造を解明する共通" class="headerlink" title="計算手法でタンパク質の構造を解明する共通"></a>計算手法でタンパク質の構造を解明する共通</h2><h3 id="Critical-Assessment-of-Techniques-for-Protein-Structure-Prediction-CASP-とは？"><a href="#Critical-Assessment-of-Techniques-for-Protein-Structure-Prediction-CASP-とは？" class="headerlink" title="Critical Assessment of Techniques for Protein Structure Prediction (CASP) とは？"></a>Critical Assessment of Techniques for Protein Structure Prediction (CASP) とは？</h3><p>CASPとは、二年ごとにタンパク質を計算手法で解明するコンテストである。実験手法で解明されたばっかりタンパク質を回答として使って、タンパク質の構造を予測する計算手法を評価できる。</p>
+<p>完全なタンパク質を予測するだけでなく、ある巨大なタンパク質の中、特定の機能を満たすドメイン(Domain)を予測することもある。</p>
+<p>計算手法というと、主に<strong>シムレーション系</strong>と<strong>バイオインフォマティクス系</strong>という二つのアプローチがある。</p>
+<p><strong>シムレーションVSバイオインフォマティクス一覧</strong></p>
+<table>
+<thead>
+<tr>
+<th>手法</th>
+<th>概要</th>
+<th>利点</th>
+<th>不便</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>シムレーション</td>
+<td>アミノ酸のそれぞれの物理的な相互作用に注意する。熱力学・統計学・物理学に基づく手法</td>
+<td>直接に構造を解くことができる</td>
+<td>タンパク質のサイズが大きくなるほど予測は難しくなる</td>
+</tr>
+<tr>
+<td>バイオインフォマティクス</td>
+<td>タンパク質の遺伝子テンプレートを進化的な関係を調べる。バイオインフォマティクス・アルゴリズムに基づく手法</td>
+<td>既に存在しているタンパク質データベース、遺伝子シーケンシングを効率的に利用できる。また、深層学習で相互関係を解析できる</td>
+<td>進化的な関係のある分子がない場合特に難しい</td>
+</tr>
+</tbody></table>
+<p>Alphafoldがリリースされた前に、シムレーションでもバイオインフォマティクスでも満足できる予測を生成できなかった。</p>
+<p>Alphafold1.0でも2.0でもバイオインフォマティクスのアプローチを利用している手法である。</p>
+<h4 id="CASPのカテゴリー"><a href="#CASPのカテゴリー" class="headerlink" title="CASPのカテゴリー"></a>CASPのカテゴリー</h4><p>CASPは更にカテゴリーに分けている。毎回のカテゴリー少し調整されているけれど、基本的に以下のカテゴリーがある。</p>
+<ul>
+<li>Template-based Modeling (TBM): 既に解明されている更に似っているタンパク質が<strong>ある</strong>。</li>
+<li>Free Modeling: 既に解明されている更に似っているタンパク質が<strong>ない</strong>。</li>
+</ul>
+<h3 id="メトリックス"><a href="#メトリックス" class="headerlink" title="メトリックス"></a>メトリックス</h3><p>計算された構造を実験手法で手に入れた構造に比べると、以下のメトリックスを使う。</p>
+<h4 id="Angstrom-Cα-root-mean-square-deviation-at-95-residue-coverage-A-r-m-s-d-95-原子位置の平均二乗偏差"><a href="#Angstrom-Cα-root-mean-square-deviation-at-95-residue-coverage-A-r-m-s-d-95-原子位置の平均二乗偏差" class="headerlink" title="Angstrom Cα root-mean-square deviation at 95% residue coverage (Å r.m.s.d.95)　原子位置の平均二乗偏差"></a>Angstrom Cα root-mean-square deviation at 95% residue coverage (Å r.m.s.d.<sub>95</sub>)　原子位置の平均二乗偏差</h4><p>名前通り、このメトリックスは、計算された構造の<strong>アミノ酸のCαの位置</strong>を実験手法で得られた構造に比べる。単位はÅ (Angstrom), 10<sup>-10</sup>m（炭素の原子半径は0.7Å)。</p>
+<p>また、95%とは、あるタンパク質の中、95%のアミノ酸のCαが揃えるために最低限の調整を意味している。</p>
+<h4 id="Local-Distance-Difference-Test-LDDT-Cα"><a href="#Local-Distance-Difference-Test-LDDT-Cα" class="headerlink" title="Local Distance Difference Test (LDDT)-Cα"></a>Local Distance Difference Test (LDDT)-Cα</h4><p><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/">原文</a>によると、RMSDは複数の動きやすいドメインの評価において、大きいなドメインにバイアスが存在する。</p>
+<figure>
+  <img src = "alphafold-ja/LDDT.png">
+  <figcaption><strong>（A）リンカーの部分だけのためドメインの相対的な位置が大きく変わるケース。人工的にタンパク質を切って、別々に評価するケース（B）。評価のスコアがそれほど変わらない。</strong> <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=3799472_btt473f1p.jpg">ソース</a>
+  </figcaption>
+</figure>
+
+
+<h4 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h4><h3 id="バイオインフォマティクス手法"><a href="#バイオインフォマティクス手法" class="headerlink" title="バイオインフォマティクス手法"></a>バイオインフォマティクス手法</h3><h4 id="Multiple-Sequence-Alignment-MSA-多重整列"><a href="#Multiple-Sequence-Alignment-MSA-多重整列" class="headerlink" title="Multiple Sequence Alignment (MSA) 多重整列"></a>Multiple Sequence Alignment (MSA) 多重整列</h4><p>配列が似ているタンパク質・遺伝子・リボ核酸を揃えるアルゴリズムである。更に、MSAにおけるも深さ(Depth)という特徴量ある。<strong>これはニューラルネットワークの深さのことではなく</strong>、MSA行列における「一つの列における解明されているアミノ酸の数」の平均値である。</p>
+<figure>
+  <img src = "alphafold-ja/msa-example.gif">
+  <figcaption><strong>アルゴリズムによる進化的な関係のシーケンスを揃えて、M*Nの行列が作れる。M=シーケンスの数、N=アミノ酸の数</strong> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Multiple_sequence_alignment#/media/File:RPLP0_90_ClustalW_aln.gif">ソース</a>
+  </figcaption>
+</figure>
+
+<h2 id="Alphafold-2-0-CASP14-2020-詳細"><a href="#Alphafold-2-0-CASP14-2020-詳細" class="headerlink" title="Alphafold 2.0 CASP14 (2020)　詳細"></a>Alphafold 2.0 CASP14 (2020)　詳細</h2><h3 id="ハイレベル一覧"><a href="#ハイレベル一覧" class="headerlink" title="ハイレベル一覧"></a>ハイレベル一覧</h3><ul>
+<li>訓練ハードウエア：128 TPUv3コア、約2週間</li>
+<li>訓練セット： 約17万公開されているタンパク質の構造</li>
+<li>テストセット：</li>
+<li>ロース：FAPE</li>
+<li>結果：CASPドメインにおける0.96 Å r.m.s.d.<sub>95</sub> (95%確信間隔 = 0.85 - 1.16Å)、二番目良いは2.8Å</li>
+<li>構造：ステージ二つ：<ol>
+<li>Evoformerニューラルネットワークブロック ４８個<ul>
+<li>MSA行列(s*r, s=シーケンスの数、r=アミノ酸の数)：行：違う種類のし</li>
+<li>ペア行列(r*r, r=アミノ酸の数):３次元空間でアミノ酸ペアの関係についての情報</li>
+</ul>
+</li>
+<li>Structureモジュール ８個<ul>
+<li>全ての原子の場所は</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="基礎的な操作一覧"><a href="#基礎的な操作一覧" class="headerlink" title="基礎的な操作一覧"></a>基礎的な操作一覧</h3><ol>
+<li>Linear 重さWの行列＋バイアスBで線形変換</li>
+<li>LinearNoBias　重さWの行列だけで線形変換</li>
+<li>LayerNorm Layer normalization</li>
+<li>sigmoid オペレーター</li>
+<li>softmax オペレーター</li>
+<li>stopgrad オペレーター</li>
+<li>&#10752; アダマール積</li>
+<li>⊗ 直積</li>
+<li>⊕　outer sum </li>
+<li>a<sup>T</sup>b 内積</li>
+<li><sub>i, j, k</sub> アミノ酸におけるインデックス</li>
+<li><sub>s, t</sub> MSAシーケンスにおけるインデックス</li>
+<li>&#9675; 三次元空間まで変換するオペレーター</li>
+</ol>
+<p>特に（１３）について、以下の性質を持っている：</p>
+<figure>
+  <img src = "alphafold-ja/alphafold2-evoformer.png">
+  <figcaption><strong>EvoFormerブロックの構造とグラフの</strong> <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-021-03819-2/figures/3">ソース</a>
+  </figcaption>
+</figure>
+
+<h3 id="Evoformer"><a href="#Evoformer" class="headerlink" title="Evoformer"></a>Evoformer</h3><figure>
+  <img src = "alphafold-ja/alphafold2-evoformer.png">
+  <figcaption><strong>EvoFormerブロックの構造とグラフの</strong> <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-021-03819-2/figures/3">ソース</a>
+  </figcaption>
+</figure>
+
+<p>Evoformerの最も重要なアイデアは、<strong>ペア行列の中の情報（アミノ酸が三次元空間に関わて情報）をグラフで表すことである。（b）</strong></p>
+<p>詳細は以下になる：</p>
+<ol>
+<li>MSA行列の処理において、まずはペア行列を考えながら行ごとにAttentionアップデートを行う, MSAの行における処理によりペア行列・MSA行列の間の相互作用を促進する。</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/msa-row.png">
+  <figcaption><strong>MSA行列のそれぞれの行における注意力メカニズム＋ペア行列によるバイアスを計算</strong> <a target="_blank" rel="noopener" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+<ol start="2">
+<li>MSAの列における処理により、同じアミノ酸の進化的な関係の情報を表す。</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/msa-column.png">
+  <figcaption><strong>MSA行列それぞれの列における注意力メカニズム</strong> <a target="_blank" rel="noopener" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+
+<ol start="3">
+<li>MSA行列をペア行列に入力すると、列の外積の平均値を取る。この値はペア行列の(i, j)値になる</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/msa-mean.png">
+  <figcaption><strong>MSA行列の外積を取って、平均値を計算する</strong> <a target="_blank" rel="noopener" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+
+<ol start="4">
+<li>ペア行列をアップデートすると、いつも縁の三角形ごとにアップデートを行う。つまり、ある縁(i, j)において、i行・j行をアップデートする。また、i列・j列をアップデートするオペレーションもある。上記図3(c)。</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/pair-tri-mul.png">
+  <figcaption><strong>MSA行列の外積を取って、平均値を計算する</strong> <a target="_blank" rel="noopener" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+
+<ol start="5">
+<li>また、 ペア行列をアップデートすると、ある行i（一つのアミノ酸またはグラフの一つのノード）の注意力メカニズムを作る。逆に、列iでも計算できる</li>
+</ol>
+<figure>
+  <img src = "alphafold-ja/pair-self.png">
+  <figcaption><strong>MSA行列の外積を取って、平均値を計算する</strong> <a target="_blank" rel="noopener" href="https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><figure>
+  <img src = "alphafold-ja/alphafold2-structure.png">
+  <figcaption><strong></strong> <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-021-03819-2/figures/3">ソース</a>
+  </figcaption>
+</figure>
+
+
+<p>StructureモジュールはEvoformerの抽象的な結果から具体的な三次元モデルを計算する役割を満たす。以下の特徴が持っている：</p>
+<ul>
+<li>構造：レーヤー数=8とシェアされている重さ。</li>
+<li>入力：Evoformerの最終的な値を行ごと（一つのアミノ酸）に使い、これをSingle representation {S<sub>i</sub>} と呼ぶ</li>
+<li>三次元モデリング：</li>
+</ul>
+<p>一つのアミノ酸を</p>
+<ul>
+<li>IPAとは、invariant point attentionを意味しているが</li>
+<li>まずはSidechainよりbackboneの場所が優先される</li>
+<li>最初訓練した時、Sidechainが可能な結合の角度を違反しても一応大丈夫。なぜなら、化学な考慮を無視すると、限局的ン最適化がしやすい。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Zhao Du</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zhao-du.github.io/alphafold-ja.html">https://zhao-du.github.io/alphafold-ja.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Zhao Du</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/">
+                                    <span class="chip bg-color">日本語</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://zhao-du.github.io/alphafold-ja.html';
+        this.page.identifier = '/alphafold-ja.html';
+        this.page.title = 'alphafoldを一から解説';
+    };
+    let disqus_shortname = '';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/python-java-exceptions.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Python and JAVA exception handling, a comparison">
+                        
+                        <span class="card-title">Python and JAVA exception handling, a comparison</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            A post attempting to solidify knowledge in exception handling by comparing the approaches in Java and Python.
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/notes/" class="post-category">
+                                    notes
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/chinese-university-students.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Excerpts from My Tier 2 University Students">
+                        
+                        <span class="card-title">Excerpts from My Tier 2 University Students</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Excerpts from a book retelling the dreams and sorrows of ordinary Chinese university students, with some food for thought.
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/food-for-thought/" class="post-category">
+                                    food for thought
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/translation/">
+                        <span class="chip bg-color">translation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Blowg<br />'
+            + 'Author: Zhao Du<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + 'Please be a nice person and put a reference when you use content from here :)""';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('true'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">Zhao Du</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Zhao-DU/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
