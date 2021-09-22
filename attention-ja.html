@@ -449,15 +449,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="リソース"><a href="#リソース" class="headerlink" title="リソース"></a>リソース</h2><ul>
+                <h2 id="リソース"><a href="#リソース" class="headerlink" title="リソース"></a>リソース</h2><p>一覧 </p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://buomsoo-kim.github.io/attention/2020/01/01/Attention-mechanism-1.md/">Attention in Neural Networks</a></li>
+</ul>
+<p>RNN・LSTM</p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://adventuresinmachinelearning.com/recurrent-neural-networks-lstm-tutorial-tensorflow/">LSTM and RNN in TensorFlow</a></li>
 <li><a target="_blank" rel="noopener" href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTMs</a></li>
+</ul>
+<p>Seq2Seq</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://emnlp2014.org/papers/pdf/EMNLP2014179.pdf">Cho al. 2014 Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a></li>
 <li><a target="_blank" rel="noopener" href="https://dennybritz.com/blog/deep-learning-most-important-ideas/">Denny Britz, Deep Learning’s most important ideas</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">Seattle Applied Deep Learning: LSTM is dead. Long Live Transformers</a></li>
 </ul>
-<h2 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>人間が「昨日、りんごと食べました」のような文を読むと、「食べました」を読むと、「りんご」についてを覚えるのが当然です。しかし、denseとcNNのような構造が「その前に来た」内容を覚えることができません。</p>
-<p>その問題を克服するため、今回の出力が次回の入力にし、「また現れる(Recurrent)」という構造が作られていた。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>NLPの記事・論文などを読むと、Attention（アテンション、注意力メカニズム）がどうしても現れる。Attentionとは、一体なにでしょうか？このポストでアテンションについての理解を深めようと思います。そして、PyTorchで実装も試してみると思います。</p>
+<h2 id="基礎：RNN・LSTM"><a href="#基礎：RNN・LSTM" class="headerlink" title="基礎：RNN・LSTM"></a>基礎：RNN・LSTM</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>人間が「昨日、りんごを食べました」のような文を読むと、「食べました」を読むと、「りんご」についてを覚えるのが当然です。しかし、denseとcNNのような構造が「その前に来た」内容を覚えることができません。</p>
+<p>その問題を克服するため、今回の出力が次回の入力にして、「また現れる(Recurrent)」という構造が作られていた。</p>
 <figure>
   <img src = "attention-ja/RNN.png">
   <figcaption style="text-align:center;"><strong>RNNのユニットを展開すると、並行しているユニット行になっている。</strong>
@@ -475,14 +484,14 @@
 <p>ある入力Nを見ると、前の入力(t-1), 入力(t-2)などを考えられることはものすごくいいですが、実際に「I grew up in France… I speak fluent｛}」の場合、その「…」の長さが一つの段落でもありえます。もちろん、直前も言葉を見ると、言語の話だとわかっていますが、「フランス語」で空白を埋めるためにもっと前の内容を覚える必要がある。</p>
 <figure>
   <img src = "attention-ja/RNN-gradient.png">
-  <figcaption style="text-align:center;"><strong>入力の重さの微分を計算すると、上記の長い式に近い式になってしまう。</strong>
+  <figcaption style="text-align:center;"><strong>入力の重さの微分を計算すると、上記の長い式に近い式になってしまう。そのため、gradientが消えてしまいます。</strong>
   </figcaption>
 </figure>
 
 <p>しかし、RNNが(t-k)、kが大きい数値の入力を覚えようとすると（文の場合でしたら長い文の最初のこととか）問題が発生してしまいます。なぜなら、Backpropagationで偏微分を計算すると、その微分が消えてしまうため、Gradient Descentでパラメーターの最適化を行うことができなくなってしまいます。</p>
 <h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p>普通型のRNNの問題を解決するため、LSTMが使われている。LSTMとは、RNNのサブタイプのであり、ただしユニットのLSTM-Cellが少し複雑になっています。</p>
 <figure>
-  <img src = "attention-ja/lstm-cell.png">
+  <img src = "attention-ja/lstm-unit.png">
   <figcaption style="text-align:center;"><strong>LSTMユニットの構造</strong>
   </figcaption>
 </figure>
@@ -516,14 +525,21 @@
 <p>そして、フロー部分をアップデートする必要がある。h<sub>t-1</sub>の値はsigmoid()でスイッチで制御されていますので、＊を使う。新しい内容は既にsigmoid()にフィルターされましたので、+を使って影響を入れる。</p>
 <figure>
   <img src = "attention-ja/lstm-conveyor-update.png">
-  <figcaption style="text-align:center;"><strong>LSTMセル：</strong>
+  <figcaption style="text-align:center;"><strong>LSTMセル：フローをアップデートする</strong>
   </figcaption>
 </figure>
 
 <p>最後に、セルのhiddenステートをアウトプットを計算する。まずはアップデートされたフロー（つまり、このセルを入力を含む値）をtanh()で正常化し、そして前に決められたフィルターでまたフィルターし、最後の出力を計算できる。</p>
-<h2 id="Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014"><a href="#Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014" class="headerlink" title="Seq2SeqまたはRNN Encoder-Decoder：Cho et al. (2014)とSutskever et al. (2014)"></a>Seq2SeqまたはRNN Encoder-Decoder：Cho et al. (2014)とSutskever et al. (2014)</h2><p>Seq2Seqとは、入力と出力がそれぞれ一つのRNN系のニューラルネットワーク（LSTM・GRU）であり、機械翻訳のために使われていた構造である。</p>
 <figure>
-  <img src = "attention-ja/seq2seq.png">
+  <img src = "attention-ja/lstm-output.png">
+  <figcaption style="text-align:center;"><strong>LSTMセル：アウトプット</strong>
+  </figcaption>
+</figure>
+
+<p>また、LSTMセルに基づく、変種のGRU、”peephole”もいろいろあります。</p>
+<h2 id="アテンション登場：Seq2Seq構造"><a href="#アテンション登場：Seq2Seq構造" class="headerlink" title="アテンション登場：Seq2Seq構造"></a>アテンション登場：Seq2Seq構造</h2><h2 id="Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014"><a href="#Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014" class="headerlink" title="Seq2SeqまたはRNN Encoder-Decoder：Cho et al.(2014)とSutskever et al. (2014)"></a>Seq2SeqまたはRNN Encoder-Decoder：Cho et al.(2014)とSutskever et al. (2014)</h2><p>Seq2Seqとは、入力と出力がそれぞれ一つのRNN系のニューラルネットワーク（LSTM・GRU）であり、機械翻訳のために使われていた構造である。</p>
+<figure>
+  <img src = "attention-ja/seq2seq-overview.png">
   <figcaption style="text-align:center;"><strong>Seq2Seq構造一覧</strong> <a target="_blank" rel="noopener" href="http://emnlp2014.org/papers/pdf/EMNLP2014179.pdf">ソース</a>
   </figcaption>
 </figure>
@@ -568,10 +584,17 @@
   </figcaption>
 </figure>
 
-<p>作者によると、このモデルの利点は二つあります：適応性のあるアラインメントと決められたベクトルCに制限されていないこと。そのため、長い文でも</p>
-<h2 id="Transformers-Vaswani-et-al-2017"><a href="#Transformers-Vaswani-et-al-2017" class="headerlink" title="Transformers Vaswani et al. (2017)"></a>Transformers Vaswani et al. (2017)</h2><p>2017年以来、Transformerに基づく構造がNLP・DLの分野に大きな影響を与えました。その最も重要なアイデアはself-attention（）</p>
-<p>アテンションを抽象的にいうと、Query(Q、列), Key(K、行)でValue(V、値)を調べるテーブルです。つまり、QとKの関係がVを決めるとも言えます。<strong>しかし</strong></p>
-<p>Transformerが主に</p>
+<p>最後に、出力の確率を計算すると、一つのCではなくそれぞれの出力s<sub>i</sub>に対するciを計算し確率を推定する</p>
+<figure>
+  <img src = "attention-ja/attention-context-decode.png">
+  <figcaption style="text-align:center;"><strong>入力・出力の重さ&alpha;「アテンション」行列。その中、特にa)のzone/areaの順位は二つ違ってもモデルが正確に関係を認識できました。</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+<p>著者によると、このモデルの利点は二つあります：適応性のあるアラインメントと決められたベクトルCに制限されていないこと。そのため、長い文でも</p>
+<h2 id="Transformers-Vaswani-et-al-2017"><a href="#Transformers-Vaswani-et-al-2017" class="headerlink" title="Transformers Vaswani et al. (2017)"></a>Transformers Vaswani et al. (2017)</h2><h2 id="BERTとその以来のモデル"><a href="#BERTとその以来のモデル" class="headerlink" title="BERTとその以来のモデル"></a>BERTとその以来のモデル</h2><!-- 2017年以来、Transformerに基づく構造がNLP・DLの分野に大きな影響を与えました。その最も重要なアイデアはself-attention（）
+
+アテンションを抽象的にいうと、Query(Q、列), Key(K、行)でValue(V、値)を調べるテーブルです。つまり、QとKの関係がVを決めるとも言えます。 -->
 
                 
             </div>
