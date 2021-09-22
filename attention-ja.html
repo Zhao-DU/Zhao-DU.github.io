@@ -464,7 +464,7 @@
 <li><a target="_blank" rel="noopener" href="https://dennybritz.com/blog/deep-learning-most-important-ideas/">Denny Britz, Deep Learning’s most important ideas</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">Seattle Applied Deep Learning: LSTM is dead. Long Live Transformers</a></li>
 </ul>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>NLPの記事・論文などを読むと、Attention（アテンション、注意力メカニズム）がどうしても現れる。Attentionとは、一体なにでしょうか？このポストでアテンションについての理解を深めようと思います。そして、PyTorchで実装も試してみると思います。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>NLPの記事・論文を読むと、Attention（アテンション、注意力メカニズム）がどうしても現れる。Attentionとは、一体なにでしょうか？このポストでアテンションについての理解を深めようと思います。そして、PyTorchで実装も試してみると思います。</p>
 <h2 id="基礎：RNN・LSTM"><a href="#基礎：RNN・LSTM" class="headerlink" title="基礎：RNN・LSTM"></a>基礎：RNN・LSTM</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>人間が「昨日、りんごを食べました」のような文を読むと、「食べました」を読むと、「りんご」についてを覚えるのが当然です。しかし、denseとcNNのような構造が「その前に来た」内容を覚えることができません。</p>
 <p>その問題を克服するため、今回の出力が次回の入力にして、「また現れる(Recurrent)」という構造が作られていた。</p>
 <figure>
@@ -481,7 +481,7 @@
 <li>U, V, Wはどちらも全部インプットにシェアされている</li>
 <li>Hiddenレーヤー・ステートh(t)​ = f(U x(t)​ + W h(t−1)​), fは非線形関数(tanh, sigmoid,ReLU)が使われている</li>
 </ul>
-<p>ある入力Nを見ると、前の入力(t-1), 入力(t-2)などを考えられることはものすごくいいですが、実際に「I grew up in France… I speak fluent｛}」の場合、その「…」の長さが一つの段落でもありえます。もちろん、直前も言葉を見ると、言語の話だとわかっていますが、「フランス語」で空白を埋めるためにもっと前の内容を覚える必要がある。</p>
+<p>ある入力Nを見ると、前の入力(t-1), 入力(t-2)などを考えられることはものすごくいいですが、実際に「I grew up in France… I speak fluent｛}」の場合、「…」の長さが一つの段落でもありえます。もちろん、直前も言葉を見ると、言語の話だとわかっていますが、「フランス語」で空白を埋めるためにもっと前の内容を覚える必要がある。</p>
 <figure>
   <img src = "attention-ja/RNN-gradient.png">
   <figcaption style="text-align:center;"><strong>入力の重さの微分を計算すると、上記の長い式に近い式になってしまう。そのため、gradientが消えてしまいます。</strong>
@@ -587,7 +587,7 @@
 <p>最後に、出力の確率を計算すると、一つのCではなくそれぞれの出力s<sub>i</sub>に対するciを計算し確率を推定する</p>
 <figure>
   <img src = "attention-ja/attention-context-decode.png">
-  <figcaption style="text-align:center;"><strong>入力・出力の重さ&alpha;「アテンション」行列。その中、特にa)のzone/areaの順位は二つ違ってもモデルが正確に関係を認識できました。</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
+  <figcaption style="text-align:center;"><strong>出力の確率を計算する</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
   </figcaption>
 </figure>
 
