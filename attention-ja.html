@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="自動微分とプログラミングの関係についての理解を深めましょう！, machine learning,back-end,python,typescript">
+    <meta name="keywords" content="NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！, machine learning,back-end,python,typescript">
     <meta name="description" content="Blog about web development, machine learning, and rants">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>自動微分とプログラミングの関係についての理解を深めましょう！ | Blowg</title>
+    <title>NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！ | Blowg</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">自動微分とプログラミングの関係についての理解を深めましょう！</h1>
+                    <h1 class="description center-align post-title">NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！</h1>
                 </div>
             </div>
         </div>
@@ -418,15 +418,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="post-category">
-                                日本語
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -434,7 +425,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-09-07
+                    2021-09-21
                 </div>
                 
 
@@ -458,193 +449,129 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ええ？なにこのポスト？"><a href="#ええ？なにこのポスト？" class="headerlink" title="ええ？なにこのポスト？"></a>ええ？なにこのポスト？</h2><p>ある関数fの微分を計算するとは、わりと簡単なルールを守りながら繰り返す操作になっていますので、計算機の力が疑いなく利用したいです。このポストで微分可能なプログラミングについての理解を深めたいと思います。</p>
-<p>具体的に、機械学習への応用を考えながら下記の点について紹介したいと思います：</p>
-<ol>
-<li>数学的な符号を理解・表現する</li>
-<li>Katorovich（計算）グラフ</li>
-<li>微分アルゴリズムの一覧</li>
-<li>自動微分（Auto-differentiation)：ボトムアップ型（Forward）・トップダウン型(Backward)の違い</li>
-<li>実装・機械学習における考慮</li>
-</ol>
-<h2 id="リソース"><a href="#リソース" class="headerlink" title="リソース"></a>リソース</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">What is Automatic Differentiation?</a><strong>ものすごくいい、まずはこれ!</strong></li>
-<li>Rall, Louis B. (1981). Automatic Differentiation: Techniques and Applications. Lecture Notes in Computer Science. 120. Springer. ISBN 978-3-540-10861-0.</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/main/docs/DifferentiableProgramming.md#calculus-is-fun">Swift Differentiable Programming Manifesto</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43455320/difference-between-symbolic-differentiation-and-automatic-differentiation">Numerical, symbolic, Automatic differentiation</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/slides/lec10.pdf">Toronto University CSC321スライド</a></li>
+                <h2 id="リソース"><a href="#リソース" class="headerlink" title="リソース"></a>リソース</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://buomsoo-kim.github.io/attention/2020/01/01/Attention-mechanism-1.md/">Attention in Neural Networks</a></li>
+<li><a target="_blank" rel="noopener" href="https://adventuresinmachinelearning.com/recurrent-neural-networks-lstm-tutorial-tensorflow/">LSTM and RNN in TensorFlow</a></li>
+<li><a target="_blank" rel="noopener" href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTMs</a></li>
+<li><a target="_blank" rel="noopener" href="https://dennybritz.com/blog/deep-learning-most-important-ideas/">Denny Britz, Deep Learning’s most important ideas</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">Seattle Applied Deep Learning: LSTM is dead. Long Live Transformers</a></li>
 </ul>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>微分を計算することにおいて、まず「ある関数fに対して、fを表す符号を理解する、コンピューターに適切なフォーマットで表す」という問題が中心になる。</p>
-<h2 id="数学的な符号を理解・表現する"><a href="#数学的な符号を理解・表現する" class="headerlink" title="数学的な符号を理解・表現する"></a>数学的な符号を理解・表現する</h2><p>厳密には、Factorable function またはCodeable functionという定義を使う。</p>
+<h2 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>人間が「昨日、りんごと食べました」のような文を読むと、「食べました」を読むと、「りんご」についてを覚えるのが当然です。しかし、denseとcNNのような構造が「その前に来た」内容を覚えることができません。</p>
+<p>その問題を克服するため、今回の出力が次回の入力にし、「また現れる(Recurrent)」という構造が作られていた。</p>
 <figure>
-  <img src = "autodiff-ja/factorable.png">
-  <figcaption style="text-align:center;"><strong>Factorable Functionsの厳密的な定義(McCormick and Kedem)</strong>
+  <img src = "attention-ja/RNN.png">
+  <figcaption style="text-align:center;"><strong>RNNのユニットを展開すると、並行しているユニット行になっている。</strong>
   </figcaption>
 </figure>
 
-<p>例を見てみましょう：</p>
-<p>ある関数 f(x, y) に対して、下記のオペレーションのシーケンスが生成できます：</p>
-<figure>
-  <img src = "autodiff-ja/sequence-ex.png">
-  <figcaption style="text-align:center;"><strong>Factorable関数の例・</strong>
-  </figcaption>
-</figure>
-
-<p>例の場合:</p>
+<p>また、0からT個の入力を考えると、上記の通り、ループを展開することができます。また、</p>
 <ul>
-<li>入力が二つありますのでn = 2, 出力が一つありますのでm = 1</li>
-<li>f<sub>1</sub> = x とf<sub>2</sub> = y により条件１）を満足する</li>
-<li>f<sub>10</sub>（最後のタームで）により唯一の結果を計算できるので条件２）を満足する</li>
-<li>f<sub>3</sub>からf<sub>10</sub>まで簡単な計算関数・三角関数のg({f<sub>i</sub>}))により次のステップを計算できるので、条件３）を満足する。また、関数gのセットを    &Lambda;と呼ぶ。</li>
-<li>簡単な数学的なオペレーションを&Lambda;が普通に、どのプログラミングでも定義されている </li>
+<li>U: 入力からユニットまでの重さ行列</li>
+<li>V: ユニットから出力までの重さ行列</li>
+<li>W: ユニット(t-1)からtの重さ行列</li>
+<li>U, V, Wはどちらも全部インプットにシェアされている</li>
+<li>Hiddenレーヤー・ステートh(t)​ = f(U x(t)​ + W h(t−1)​), fは非線形関数(tanh, sigmoid,ReLU)が使われている</li>
 </ul>
-<p>更に、上記のシーケンスを使って、Kantorovichグラフが作れる。</p>
+<p>ある入力Nを見ると、前の入力(t-1), 入力(t-2)などを考えられることはものすごくいいですが、実際に「I grew up in France… I speak fluent｛}」の場合、その「…」の長さが一つの段落でもありえます。もちろん、直前も言葉を見ると、言語の話だとわかっていますが、「フランス語」で空白を埋めるためにもっと前の内容を覚える必要がある。</p>
 <figure>
-  <img src = "autodiff-ja/Kantorovich-ex.png">
-  <figcaption style="text-align:center;"><strong>例f(x, y)のKantorovichグラフ</strong>
+  <img src = "attention-ja/RNN-gradient.png">
+  <figcaption style="text-align:center;"><strong>入力の重さの微分を計算すると、上記の長い式に近い式になってしまう。</strong>
   </figcaption>
 </figure>
 
-<p>上記のグラフの中、ノードは三種類ある：</p>
+<p>しかし、RNNが(t-k)、kが大きい数値の入力を覚えようとすると（文の場合でしたら長い文の最初のこととか）問題が発生してしまいます。なぜなら、Backpropagationで偏微分を計算すると、その微分が消えてしまうため、Gradient Descentでパラメーターの最適化を行うことができなくなってしまいます。</p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><p>普通型のRNNの問題を解決するため、LSTMが使われている。LSTMとは、RNNのサブタイプのであり、ただしユニットのLSTM-Cellが少し複雑になっています。</p>
+<figure>
+  <img src = "attention-ja/lstm-cell.png">
+  <figcaption style="text-align:center;"><strong>LSTMユニットの構造</strong>
+  </figcaption>
+</figure>
+
+<p>このようなLSTMセルが、なぜRNNの問題を解決できるというと、それぞれの要素を詳しく見る必要がある。まずは、LSTMのセルの中、以下の関数がよくつかわれている</p>
 <ul>
-<li>出力だけ：入力の変数(x, y)かまた常数c。</li>
-<li>出力・入力どっちでもある：中間の計算結果。</li>
-<li>入力だけ：最終結果</li>
+<li>sigmoid関数：この関数は(0, 1)を出力しますので、スイッチのような存在です</li>
+<li>tanhこの関数は、(-1, 1)を出力しますので、方向性を与え、正常化を行う。</li>
 </ul>
-<p>以上のシーケンス・グラフを使って、どのような複雑な関数であっても理解しやすいグラフ、パソコンが理解できるシーケンスで表せる。</p>
-<h2 id="微分を計算するアルゴリズム一覧"><a href="#微分を計算するアルゴリズム一覧" class="headerlink" title="微分を計算するアルゴリズム一覧"></a>微分を計算するアルゴリズム一覧</h2><p>微分を計算するアルゴリズムは、</p>
-<ol>
-<li>数値微分法 (Numerical Differentiation)</li>
-</ol>
-<p>数字から微分を値を求める手法です。一番有名・簡単なのは差分商です。</p>
 <figure>
-  <img src = "autodiff-ja/num_diff.png">
-  <figcaption style="text-align:center;"><strong>差分商により微分の値を推定する例</strong>　<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Newton%27s_method">ソース</a>
+  <img src = "attention-ja/lstm-conveyor.png">
+  <figcaption style="text-align:center;"><strong>LSTMセル：フロー部分</strong>
   </figcaption>
 </figure>
 
-<p>利点として実装でも簡易にできる上に、N次の導関数でも求めらる。更に、関数の本体を知らずに、サンプルデータでも計算できます</p>
-<p>デメリットとして誤差が大きくて、特に、hが小さくなると、直線の精度は上達しますが、フロート計算の精度が落ちてしまいますので、最適のHの値を見つけるのが難しい。</p>
+<p>まずは上の直線を見ましょう。この線によると、シーケンスが大体変えずに次のセルに行けます。このため、離れているセルでもお互いに影響することができます。</p>
+<p>次に、「忘れるゲート」を見ましょう。この部分ではsigmoid関数でh<sub>t-1</sub>を覚えるか忘れるかと制御できます。</p>
 <figure>
-  <img src = "autodiff-ja/num_tradeoff.png">
-  <figcaption style="text-align:center;"><strong>予測距離のHによる誤差のバーレーが存在する</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/lstm-forget.png">
+  <figcaption style="text-align:center;"><strong>LSTMセル：既に見た内容をsigmoidで選択する</strong>
   </figcaption>
 </figure>
 
-<p>更に問題的なのは、計算量がO(n)であること。機械学習においてパラメーターの数の正比例と意味しているので効率が悪いです。</p>
-<ol>
-<li>符号微分　(Symbolic Differentiation)</li>
-</ol>
-<p>符号を微分の法則で一つ一つ展開し最後にマージして、<strong>数学的な表現を手に入れられる</strong>。手で式を計算すると同じ流れになります。MATLABとMathematicaはこのアプローチを使っている。</p>
-<p>利点として結果は精確であり、人間の考えかたに似っていること。</p>
+<p>次は「新しい内容ゲート」です。この部分ではまずsigmoid関数で「アップデートしたい」フラグをつけて、そしてtanh()でアップデート値を決める。次にこの重さを掛ける。</p>
 <figure>
-  <img src = "autodiff-ja/symbolic-relu.png">
-  <figcaption style="text-align:center;"><strong>符号微分でSoftReLU2回の関数を微分する</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/lstm-new.png">
+  <figcaption style="text-align:center;"><strong>LSTMセル：新しい内容をsigmoidで選択しtanh()でスケールして</strong>
   </figcaption>
 </figure>
 
-<p>デメリットとして式を展開する必要がありますので、上記通り、複数の関数を合成すると（f ∘ g）計算量・メモリーに対する無理になってしまいます。</p>
-<p>更に閉形式の入力が必要となっていますので、IF, FORのようなプログラミングの構造が使えませんのでとても不便です。</p>
-<ol start="3">
-<li>自動微分 (Automatic differentiation)</li>
-</ol>
-<p>自動微分は微分の法則、チェーンルールを利用し、<strong>式ではなく値</strong>を計算する。</p>
-<p>中間値を使って、符号の展開を避けることができますので、精度を守りながら計算量・メモリーに対する要求を減らすことができます。</p>
-<p>自動微分は<strong>ボトムアップ型自動微分</strong> (Forward Autodiff)と<strong>トップダウン型自動微分</strong> (Backward/Reverse Autodiff)。</p>
-<p>機械学習において、圧倒的に自動微分が使われていますのでこれについて詳しく話したいと思います。</p>
-<h2 id="ボトムアップ型自動微分-Forward-Autodiff"><a href="#ボトムアップ型自動微分-Forward-Autodiff" class="headerlink" title="ボトムアップ型自動微分 (Forward Autodiff)"></a>ボトムアップ型自動微分 (Forward Autodiff)</h2><p>ボトムアップは名前通り、入力から前に進む手法であり、全てf<sub>m</sub>関数は一つの入力x<sub>1</sub>に対する微分を計算できる。</p>
+<p>そして、フロー部分をアップデートする必要がある。h<sub>t-1</sub>の値はsigmoid()でスイッチで制御されていますので、＊を使う。新しい内容は既にsigmoid()にフィルターされましたので、+を使って影響を入れる。</p>
 <figure>
-  <img src = "autodiff-ja/forward-partial.png">
-  <figcaption style="text-align:center;"><strong>ボトムアップ型微分で計算</strong>
+  <img src = "attention-ja/lstm-conveyor-update.png">
+  <figcaption style="text-align:center;"><strong>LSTMセル：</strong>
   </figcaption>
 </figure>
 
-
+<p>最後に、セルのhiddenステートをアウトプットを計算する。まずはアップデートされたフロー（つまり、このセルを入力を含む値）をtanh()で正常化し、そして前に決められたフィルターでまたフィルターし、最後の出力を計算できる。</p>
+<h2 id="Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014"><a href="#Seq2SeqまたはRNN-Encoder-Decoder：Cho-et-al-2014-とSutskever-et-al-2014" class="headerlink" title="Seq2SeqまたはRNN Encoder-Decoder：Cho et al. (2014)とSutskever et al. (2014)"></a>Seq2SeqまたはRNN Encoder-Decoder：Cho et al. (2014)とSutskever et al. (2014)</h2><p>Seq2Seqとは、入力と出力がそれぞれ一つのRNN系のニューラルネットワーク（LSTM・GRU）であり、機械翻訳のために使われていた構造である。</p>
 <figure>
-  <img src = "autodiff-ja/autodiff-forward.png">
-  <figcaption style="text-align:center;"><strong>ボトムアップ自動微分グラフ</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/seq2seq.png">
+  <figcaption style="text-align:center;"><strong>Seq2Seq構造一覧</strong> <a target="_blank" rel="noopener" href="http://emnlp2014.org/papers/pdf/EMNLP2014179.pdf">ソース</a>
   </figcaption>
 </figure>
 
-<p>例として、上の関数について以下の微分の計算したい：</p>
+<p>例えば、英語の原文をフランス語に翻訳しようとする時、まずはエンコーダーが英文のベクトルを読み込んで、下記の図通りHiddenステートを計算し、エンコーダーのHiddenステートCが英語文の概要となっている。</p>
 <figure>
-  <img src = "autodiff-ja/forward-example.png">
-</figure>
-
-<p>その時、下記の通り、x<sub>1</sub>とx<sub>2</sub>の値に決めて、<strong>値（primals）と一次微分(tangents)をタプルとして計算する</strong>。</p>
-<figure>
-  <img src = "autodiff-ja/autodiff-forward-values.png">
-  <figcaption style="text-align:center;"><strong>ボトムアップ自動微分</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/seq2seq-encode.png">
+  <figcaption style="text-align:center;"><strong>エンコーダーのHiddenステートベクトル、またはCの計算式。f, qが非線形関数。Sutskeverの場合、f:LSTMユニット、q=h<sub>T</sub></strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
   </figcaption>
 </figure>
 
-<p>最初のtangentsがx<sub>1</sub>に対する偏微分になっていますので、最後の結果もfがx<sub>1</sub>に対する微分になっています。また、複数のfがあってもグラフを通りましたら微分の値を計算できます。</p>
-<p>この手法が m &gt;&gt; n の場合だととても良いですが、機械学習において n &gt;&gt; m　なので、Backward Autodiffが必要となる。</p>
-<h2 id="トップダウン型自動微分-Backward-Reverse-Autodiff"><a href="#トップダウン型自動微分-Backward-Reverse-Autodiff" class="headerlink" title="トップダウン型自動微分 (Backward/Reverse Autodiff)"></a>トップダウン型自動微分 (Backward/Reverse Autodiff)</h2><p>トップダウンは、出力からの逆計算なっていますが、流れという二つの部分があります。</p>
-<ol>
-<li>まずは一回ボトムアップ型を計算を行う、ただし、一次微分を計算をせずにメモリーに中間値とグラフ関係をセーブする（このデータを「テープ」と呼ぶ）</li>
-<li>出力からそれぞれのノードの<strong>Adjoint</strong>を計算し、入力まで微分の一々計算する</li>
-</ol>
-<p>ちなみに、Define-and-run（TensorFlow, Theanoとdefine-by-run(PyTorch, Chainer)の違いはステップ１にあります：</p>
+<p>次に、デーコーダーがCも入力とし（エンコーダーに比べると入力）、自身のHiddenステートを計算することができます。そして、下記通り、関数g()によるフランス語の確率ベクトルを生成する。</p>
+<figure>
+  <img src = "attention-ja/seq2seq-decode.png">
+  <figcaption style="text-align:center;"><strong>デーコーダーのHiddenステートベクトル、または最後の出力翻訳文において確率Yの計算式。訳文の最終的な確率はシーケンスの乗、さらに,gは非線形関数・複数レーヤーにおける関数、s<sub>t</sub>はデーコーダーのHiddenステート</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
+  </figcaption>
+</figure>
+
+<p>こちらで注意していただきたいのは以下の点：</p>
 <ul>
-<li>（Define-and-run）: 最初のForward計算をすると、グラフを全部作ってデータを入れて計算する</li>
-<li>（Define-by-run）：データ使って、中間値を計算しながらグラフを作る。</li>
+<li><strong>普通型のSeq2Seqモデルにおいて、ベクトルCのサイズがハイパーパラメータとして決まっている。</strong></li>
+<li><strong>英語文のベクトルとフランス語のベクトルの長さは変わってもいい（Cと違う！）</strong></li>
 </ul>
+<h2 id="Seq2Seq改善：Attentionメカニズム-Bahdahanu-et-al-2015"><a href="#Seq2Seq改善：Attentionメカニズム-Bahdahanu-et-al-2015" class="headerlink" title="Seq2Seq改善：Attentionメカニズム Bahdahanu et al. (2015)"></a>Seq2Seq改善：Attentionメカニズム Bahdahanu et al. (2015)</h2><p>Bahdahanu et al.が「Seq2Seqの欠点はサイズが決まっている概要ベクトルCである」と主張しました。その理由は、Seq2Seqを使うと、短い文でも長い文でも同じ長さの概要ベクトルに詰めないといけなくて、訓練セットではめったにない長い文をエンコーダーで「概要」を生成すると、情報ロースが発生してしまうからです。この問題を克服するため、「出力を入力に揃える」、つまり、文のある部分を注意するというメカニズムをニューラルネットワークの構造に入れました。</p>
 <figure>
-  <img src = "autodiff-ja/backward-graph.png">
-  <figcaption style="text-align:center;"><strong>Adjointの計算。直観的な定義として「ノードiのAdjoint＝（子供ノードjに対する影響*この子供自身の影響）の和」である</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/attention-biRNN.png">
+  <figcaption style="text-align:center;"><strong>ある言葉のHiddenステートh<sub>j</sub>が順・逆で二回計算する</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
   </figcaption>
 </figure>
 
-<p>例として、同じ(1.5, 0.5)点で、今回はfがx<sub>1</sub>とx<sub>2</sub>に対する微分を計算しましょう。</p>
+<p>次に、概要ベクトル（この論文の場合はContextベクトルと呼ばれている）を計算すると、次の式を使う。</p>
 <figure>
-  <img src = "autodiff-ja/backward-example.png">
-  <figcaption style="text-align:center;"><strong>トップダウン型の計算。まずは(1.5, 0.5)を式に入れて、結果を覚えながらPrimalsを計算して。そのあと、最後のノードのAdjointを1にして、出力から前に微分を「広げる」</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/attention-context.png">
+  <figcaption style="text-align:center;"><strong></strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
   </figcaption>
 </figure>
 
-<p>上の例通り、グラフの一回通りましたらある出力に対して全ての入力の微分を計算できますので、 m &lt;&lt; n の場合効率的です。<strong>つまり、ニューラルネットワークの話をすると、この自動微分を使っている</strong></p>
-<h2 id="実装・機械学習における考慮"><a href="#実装・機械学習における考慮" class="headerlink" title="実装・機械学習における考慮"></a>実装・機械学習における考慮</h2><h3 id="時空間計算量"><a href="#時空間計算量" class="headerlink" title="時空間計算量"></a>時空間計算量</h3><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1809.08530">Griewank and Waltherたちがトップダウン型・ボトムアップ型の時空間計算量</a>について以下を証明しました。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>時間量</th>
-<th>空間量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Forward</td>
-<td>n<em>c</em>ops(f)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Backward</td>
-<td>m<em>c</em>ops(f)</td>
-<td>O(ops(f))</td>
-</tr>
-</tbody></table>
-<p>ops(f)はグラフを一回評価する計算量<br>c は係数であり、その値が &lt;= 6、実際に2-3ぐらい。</p>
-<p>更に、ボトムアップ型の空間量に対して、グラフのある部分だけをセーブする機能で更に空間量を節約できる論文もあります。</p>
-<h3 id="Source-code-transformation"><a href="#Source-code-transformation" class="headerlink" title="Source code transformation"></a>Source code transformation</h3><p>これは、OOP言語が存在する前にでも存在していた古いアプローチである。要するに、プログラマーは外部のツールを使って、ツールに関数・変数の定義を提供しましたら、ツールが関数を定義するコードを自動的に書いてもらえる。</p>
+<p>この中、一番面白いのはa()。a()はfeedforwardのニューラルネットワークである、直接にモデルと一緒にBackpropを使って最適化することができます。このa()の出力e<sub>ij</sub>・a<sub>ij</sub>が、「h<sub>j</sub>の周り、どトークンは重要？」に答えられますので、これは「注意力」と呼ぶ理由となります。下記のヒートマップでは、その注意力を可視化しました。</p>
 <figure>
-  <img src = "autodiff-ja/source-code-transformation.png">
-  <figcaption style="text-align:center;"><strong></strong>ツールに関数の定義を入れて、コードが生成される<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff">ソース</a>
+  <img src = "attention-ja/attention-context-weight.png">
+  <figcaption style="text-align:center;"><strong>入力・出力の重さ&alpha;「アテンション」行列。その中、特にa)のzone/areaの順位は二つ違ってもモデルが正確に関係を認識できました。</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
   </figcaption>
 </figure>
 
-
-<p>利点としてはコンパイラーに関数のロジックを直接に見せて、最適化も可能になる。</p>
-<p>デメリットとして外部のツールを使う必要があって、人工的に入力する必要があります。</p>
-<h3 id="Operating-Overloading"><a href="#Operating-Overloading" class="headerlink" title="Operating Overloading"></a>Operating Overloading</h3><p>Pythonのような言語では変数の値・微分をペアでトラックするクラスを定義し、直接にdunderメソッドによりオペレーターをオーバーロードすることができる。</p>
-<figure>
-  <img src = "autodiff-ja/operator-overloading.png">
-  <figcaption style="text-align:center;"><strong>Variableクラスを定義し、"+"オペレーターをオーバーロードする</strong>　<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=wG_nF1awSSY&ab_channel=AriSeff"> ソース</a>
-  </figcaption>
-</figure>
-
-<p>しかし、このようなクラスの定義において、プログラミング言語によって色々な制限がありますのでも完璧なアプローチではありません。</p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>今回はプログラミング言語において微分の実装について紹介しました。また機会がありましたら人気のDLフレームワークにおいてAutodiffの詳細について、Differential Programingというパラダイムについて勉強したいと思います。</p>
+<p>作者によると、このモデルの利点は二つあります：適応性のあるアラインメントと決められたベクトルCに制限されていないこと。そのため、長い文でも</p>
+<h2 id="Transformers-Vaswani-et-al-2017"><a href="#Transformers-Vaswani-et-al-2017" class="headerlink" title="Transformers Vaswani et al. (2017)"></a>Transformers Vaswani et al. (2017)</h2><p>2017年以来、Transformerに基づく構造がNLP・DLの分野に大きな影響を与えました。その最も重要なアイデアはself-attention（）</p>
+<p>アテンションを抽象的にいうと、Query(Q、列), Key(K、行)でValue(V、値)を調べるテーブルです。つまり、QとKの関係がVを決めるとも言えます。<strong>しかし</strong></p>
+<p>Transformerが主に</p>
 
                 
             </div>
@@ -671,7 +598,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhao-du.github.io/autodiff-ja.html">https://zhao-du.github.io/autodiff-ja.html</a>
+                    <a href="https://zhao-du.github.io/attention-ja.html">https://zhao-du.github.io/attention-ja.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -750,9 +677,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://zhao-du.github.io/autodiff-ja.html';
-        this.page.identifier = '/autodiff-ja.html';
-        this.page.title = '自動微分とプログラミングの関係についての理解を深めましょう！';
+        this.page.url = 'https://zhao-du.github.io/attention-ja.html';
+        this.page.identifier = '/attention-ja.html';
+        this.page.title = 'NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！';
     };
     let disqus_shortname = '';
 
@@ -782,9 +709,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/attention-ja.html">
                     <div class="card-image">
@@ -802,9 +730,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -813,6 +741,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -831,31 +760,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/python-java-exceptions.html">
+                <a href="/autodiff-ja.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Python, Java, C++ exception handling, a comparison">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="自動微分とプログラミングの関係についての理解を深めましょう！">
                         
-                        <span class="card-title">Python, Java, C++ exception handling, a comparison</span>
+                        <span class="card-title">自動微分とプログラミングの関係についての理解を深めましょう！</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            A post attempting to solidify knowledge in exception handling by comparing the approaches in Java, Python and C++).
+                            DLフレームワークを使うと、 「コンパイルされたグラフ」、「ダイナミックなグラフ」のような言葉がよく見られている。このポストでそういう表現の後ろの理由・詳細を探してみたいと思います。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/notes/" class="post-category">
-                                    notes
+                            <a href="/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/" class="post-category">
+                                    日本語
                                 </a>
                             
                             
@@ -865,12 +794,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/">
+                        <span class="chip bg-color">日本語</span>
                     </a>
                     
                 </div>

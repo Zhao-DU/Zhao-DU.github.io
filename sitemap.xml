@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zhao-du.github.io/attention-ja.html</loc>
+    
+    <lastmod>2021-09-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zhao-du.github.io/chinese-university-students.html</loc>
+    
+    <lastmod>2021-09-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zhao-du.github.io/autodiff-ja.html</loc>
     
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>https://zhao-du.github.io/alphafold-ja.html</loc>
     
     <lastmod>2021-09-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zhao-du.github.io/chinese-university-students.html</loc>
-    
-    <lastmod>2021-08-30</lastmod>
     
   </url>
   
@@ -116,7 +123,7 @@
 
   <url>
     <loc>https://zhao-du.github.io/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -124,84 +131,84 @@
   
   <url>
     <loc>https://zhao-du.github.io/tags/deep-learning/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/python/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/pytorch/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/under-construction/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/AWS/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/GCP/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/continuous-updates/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/linux/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/git/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/translation/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/tags/java/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -210,28 +217,28 @@
   
   <url>
     <loc>https://zhao-du.github.io/categories/tutorial/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/categories/notes/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/categories/%E6%97%A5%E6%9C%AC%E8%AA%9E/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://zhao-du.github.io/categories/food-for-thought/</loc>
-    <lastmod>2021-09-08</lastmod>
+    <lastmod>2021-09-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
