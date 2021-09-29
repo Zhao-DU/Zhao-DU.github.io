@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！, machine learning,back-end,python,typescript">
+    <meta name="keywords" content="NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！, machine learning,back-end,python,typescript">
     <meta name="description" content="Blog about web development, machine learning, and rants">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！ | Blowg</title>
+    <title>NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！ | Blowg</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -288,12 +288,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！</h1>
+                    <h1 class="description center-align post-title">NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！</h1>
                 </div>
             </div>
         </div>
@@ -462,7 +462,16 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="http://emnlp2014.org/papers/pdf/EMNLP2014179.pdf">Cho al. 2014 Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a></li>
 <li><a target="_blank" rel="noopener" href="https://dennybritz.com/blog/deep-learning-most-important-ideas/">Denny Britz, Deep Learning’s most important ideas</a></li>
+<li><a target="_blank" rel="noopener" href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing the Seq2Seq model and attention</a></li>
+</ul>
+<p>Transformers</p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">Seattle Applied Deep Learning: LSTM is dead. Long Live Transformers</a></li>
+<li><a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</a>（<strong>まずはこれ！本当に素晴らしいアニメーション！！</strong>）</li>
+</ul>
+<p>HuggingFaceで実装のノートブック</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/15WOPvd7et7ggHjhZRYKNkqnOIJ_XF5aH?usp=sharing">Seq2Seq ANKIデータセット翻訳</a></li>
 </ul>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>NLPの記事・論文を読むと、Attention（アテンション、注意力メカニズム）がどうしても現れる。Attentionとは、一体なにでしょうか？このポストでアテンションについての理解を深めようと思います。そして、PyTorchで実装も試してみると思います。</p>
 <h2 id="基礎：RNN・LSTM"><a href="#基礎：RNN・LSTM" class="headerlink" title="基礎：RNN・LSTM"></a>基礎：RNN・LSTM</h2><h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>人間が「昨日、りんごを食べました」のような文を読むと、「食べました」を読むと、「りんご」についてを覚えるのが当然です。しかし、denseとcNNのような構造が「その前に来た」内容を覚えることができません。</p>
@@ -577,7 +586,7 @@
   </figcaption>
 </figure>
 
-<p>この中、一番面白いのはa()。a()はfeedforwardのニューラルネットワークである、直接にモデルと一緒にBackpropを使って最適化することができます。このa()の出力e<sub>ij</sub>・a<sub>ij</sub>が、「h<sub>j</sub>の周り、どトークンは重要？」に答えられますので、これは「注意力」と呼ぶ理由となります。下記のヒートマップでは、その注意力を可視化しました。</p>
+<p>この中、一番面白いのはa()。a()はfeedforwardのニューラルネットワークである、直接にモデルと一緒にBackpropを使って最適化することができます。このa()の出力e<sub>ij</sub>・a<sub>ij</sub>が、「h<sub>j</sub>の周り、どのトークンが重要でしょうか？」という質問に答えますので、これは「注意力」と呼ぶ理由となります。下記のヒートマップでは、その注意力を可視化しました。このヒートマップの中、行は出力であり、「Query」または「Q」と呼ばれている。列は入力であり、「Key」または「K」と呼ばれる。</p>
 <figure>
   <img src = "attention-ja/attention-context-weight.png">
   <figcaption style="text-align:center;"><strong>入力・出力の重さ&alpha;「アテンション」行列。その中、特にa)のzone/areaの順位は二つ違ってもモデルが正確に関係を認識できました。</strong> <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.0473.pdf">ソース</a>
@@ -591,10 +600,100 @@
   </figcaption>
 </figure>
 
-<p>著者によると、このモデルの利点は二つあります：適応性のあるアラインメントと決められたベクトルCに制限されていないこと。そのため、長い文でも</p>
-<h2 id="Transformers-Vaswani-et-al-2017"><a href="#Transformers-Vaswani-et-al-2017" class="headerlink" title="Transformers Vaswani et al. (2017)"></a>Transformers Vaswani et al. (2017)</h2><h2 id="BERTとその以来のモデル"><a href="#BERTとその以来のモデル" class="headerlink" title="BERTとその以来のモデル"></a>BERTとその以来のモデル</h2><!-- 2017年以来、Transformerに基づく構造がNLP・DLの分野に大きな影響を与えました。その最も重要なアイデアはself-attention（）
+<p>著者によると、このモデルの利点は二つあります：</p>
+<ul>
+<li>A() というニューラルネットワークにより適応性のあるアラインメント。つまり、A()の重さにより「どのトークンを重視すべきか」が決められる。</li>
+<li>決められたベクトルCに制限されていないこと。</li>
+</ul>
+<h2 id="Transformers-Vaswani-et-al-2017"><a href="#Transformers-Vaswani-et-al-2017" class="headerlink" title="Transformers Vaswani et al. (2017)"></a>Transformers Vaswani et al. (2017)</h2><p>2017年以来、Transformerに基づく構造がNLP・DLの分野に大きな影響を与えました。</p>
+<p>その理由は以下となります：</p>
+<ul>
+<li>self-attention（自己アテンション）</li>
+<li>Positional Embedding（位置の把握）</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>まずは、Transformer構造を見ましょう：</p>
+<figure>
+  <img src = "attention-ja/transformers-encoder-decoder.png">
+  <figcaption style="text-align:center;"><strong>翻訳に適用するTransformerの構造。まずは左のエンコーダーに集中しましょう。</strong> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">ソース</a>
+  </figcaption>
+</figure>
 
-アテンションを抽象的にいうと、Query(Q、列), Key(K、行)でValue(V、値)を調べるテーブルです。つまり、QとKの関係がVを決めるとも言えます。 -->
+<p>エンコーダーの部分のかなり複雑であり、しかしキーな部分はその真ん中の”Multi-Head Attention”です。</p>
+<figure>
+  <img src = "attention-ja/transformers-encoder-attention.png">
+  <figcaption style="text-align:center;"><strong>FeedForwardの部分とは、FcレーヤーだけですのでAttentionに注意しましょう。</strong> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">ソース</a>
+  </figcaption>
+</figure>
+
+<p>Transformersにおいて、Self-Attentionとなります。つまり、<strong>QueryもKeyも、入力に関わるものである。</strong></p>
+<figure>
+  <img src = "attention-ja/transformers-kqv.png">
+  <figcaption style="text-align:center;"><strong>入力"Thinking Machine"のK,Q,V行列により変換する。</strong> <a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">ソース</a>
+  </figcaption>
+</figure>
+
+<p>QとKを計算しましたら、お互いの「重要さ」スコア（Relevance)を計算するため、内積を取る。</p>
+<figure>
+  <img src = "attention-ja/transformers-kqv-dot.png">
+  <figcaption style="text-align:center;"><strong>KとQでスコアを計算する。</strong> <a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">ソース</a>
+  </figcaption>
+</figure>
+
+<p>スコアを計算しましたら、下記の図通り、QとKの上に、Kのコピー、<strong>Value(V)</strong> という行列も使います。個人的な理解なんですが、これはスキップコネクション・LSTMのフロー部分に似ているじゃないかと思います。<strong>また、Q, K, V, はパラメーター行列である。</strong>　</p>
+<figure>
+  <img src = "attention-ja/transformers-attention-detail.png">
+  <figcaption style="text-align:center;"><strong>Transformerのエンコーダーの詳細。RelevanceはKとQの内積である。</strong> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">ソース</a>
+  </figcaption>
+</figure>
+
+<p>また、コードにおいて、このような感じになります：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token comment"># X_in : Tensorリスト：一つの入力のトークン＝一つのTensor</span>
+<span class="token keyword">def</span> <span class="token function">attention</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X_in<span class="token punctuation">:</span>List<span class="token punctuation">[</span>Tensor<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token comment"># 1. まずは一つのForループでQ、K、V（パラメーター行列）で入力のEnbeddingベクトルをかける</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>sequence_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        query<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>Q <span class="token operator">*</span> X_in<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        key<span class="token punctuation">[</span>i<span class="token punctuation">]</span>   <span class="token operator">=</span> self<span class="token punctuation">.</span>K <span class="token operator">*</span> X_in<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        value<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>V <span class="token operator">*</span> X_in<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+    <span class="token comment"># 2. QとKと使って、内積によりスコアを計算する</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>sequence_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        this_query <span class="token operator">=</span> query<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>sequence_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            relevance<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>dot<span class="token punctuation">(</span>this_query<span class="token punctuation">,</span>key<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># Softmaxによりスケーリング</span>
+        relevance <span class="token operator">=</span> scaled_softmax<span class="token punctuation">(</span>relevance<span class="token punctuation">)</span>
+
+        <span class="token comment"># アウトプットを計算、Vをそのまま足す</span>
+        out<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span> 
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>sequence_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            out<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> relevance<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> value<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> out
+  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Multiheadとは、これを何回でもやる。元の論文は８を使いました。アテンションブロックを八つ使って、言語の様々な特徴に集中して勉強できる（文法、語彙など）。</p>
+<h3 id="Positional-Embedding（位置の把握）"><a href="#Positional-Embedding（位置の把握）" class="headerlink" title="Positional Embedding（位置の把握）"></a>Positional Embedding（位置の把握）</h3><p>次に、言葉の位置を把握するのはも重要です。</p>
+<p>この問題を解決ために、Word2Vecで得られたベクトルに様々な周期の三角関数の値を足して、モデルに「この言葉の位置はどのぐらい」を教える。</p>
+<figure>
+  <img src = "attention-ja/transformers-position.png">
+  <figcaption style="text-align:center;"><strong>三角関数を利用して、トークンの順番をエンコードすることができます。行はトークン（２０個）、列はEmbedding（５１２列）。左はsinを使いました、右はcos。</strong> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=S27pHKBEp30&ab_channel=SeattleAppliedDeepLearning">ソース</a>
+  </figcaption>
+</figure>
+
+
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>これでTranformerのキーな部分、特にself-attention、を理解しました。Decoderは大体同じな構造で、ただし最後logitを出力の語彙の確率に変換するレーヤーがあります。</p>
+<p>LSTMのような構造に比べて、transformerは以下のメリットが持っている：</p>
+<ol>
+<li>訓練しやすい</li>
+<li>特定のデータセットを使って最適化されたLSTMより<strong>汎用性(Transfer Learning)が圧倒的によい。</strong></li>
+<li>最初の訓練は、<strong>レベルされていないデータでもよい</strong>。つまり、あらゆるテキストデータが使えます。</li>
+<li>計算の速さです。Self-attentionにおいて、全てのトークンに対して全ての他のトークンに比べる必要があるので、<strong>計算量はO(n<sup>2</sup>)にある。しかし、LSTMのような構造と違って、並行で計算できますので、GPUの力の利用して速度を上げることができます。</strong></li>
+<li><code>sigmoid()</code> と <code>tanh()</code>のような計算精度が必要な関数を使いませんので、精度が高くないハードウエアでも使えます。</li>
+</ol>
+<p>これから実際にHuggingFaceというライブラリーを使って、SOTAのTransformerモデルでNLPのタスクに挑んでみると思います。</p>
 
                 
             </div>
@@ -702,7 +801,7 @@
     disqus_config = function () {
         this.page.url = 'https://zhao-du.github.io/attention-ja.html';
         this.page.identifier = '/attention-ja.html';
-        this.page.title = 'NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！';
+        this.page.title = 'NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！';
     };
     let disqus_shortname = '';
 
@@ -741,9 +840,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！">
                         
-                        <span class="card-title">NLPにおいて注意力メカニズム・アテンション（Attention）についての理解を深めましょう！</span>
+                        <span class="card-title">NLPにおいて注意力機構・アテンション（Attention）についての理解を深めましょう！</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
